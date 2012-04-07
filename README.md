@@ -11,6 +11,8 @@ tests.
 
 2. Run _./server start_ to fire up the JsTestDriver server and Phantom JS.
 
+(Run _./server stop_ to kill the daemonized JSTD server and PhantomJS processes.)
+
 ## Running Tests
 
 The _runtests.sh_ script will run all js unit tests against JsTestDriver, using Phantom JS
