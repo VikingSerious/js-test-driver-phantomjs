@@ -1,15 +1,11 @@
 #!/bin/bash
 
 ROOTDIR="$( cd "$( dirname "$0")" && pwd )"
-PHANTOMJS_HOME=$PHANTOMJS_HOME
 JSTD_VERSION=1.3.4.b
 
 COMMAND=$1
 
-if [ -z "$PHANTOMJS_HOME" ]; then
-    echo "PHANTOMJS_HOME env var not set."
-    exit 1
-fi
+command -v phantomjs >/dev/null 2>&1 || { echo "Can't find phantomjs, please make sure it's on your PATH." >&2; exit 1; }
 
 if [ ! -f "$ROOTDIR/JsTestDriver-$JSTD_VERSION.jar" ]; then
     echo "Downloading JsTestDriver jar ..."
@@ -31,7 +27,7 @@ if [[ $COMMAND == "start" ]]; then
 
     echo "Starting PhantomJS"
 
-    nohup $PHANTOMJS_HOME/bin/phantomjs phantomjs-jstd.js > $ROOTDIR/phantomjs.out 2> $ROOTDIR/phantomjs.err < /dev/null &
+    nohup phantomjs phantomjs-jstd.js > $ROOTDIR/phantomjs.out 2> $ROOTDIR/phantomjs.err < /dev/null &
     echo $! > $ROOTDIR/phantomjs.pid
 fi
 
