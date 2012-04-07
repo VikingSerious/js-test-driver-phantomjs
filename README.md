@@ -9,7 +9,7 @@ tests.
 1. Download v1.5 (or greater) of Phantom JS and set an environment variable called PHANTOMJS_HOME
    to the install location.
 
-2. Run ./server start to fire up the JsTestDriver server and Phantom JS.
+2. Run -./server start- to fire up the JsTestDriver server and Phantom JS.
 
 ## Running Tests
 
