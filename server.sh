@@ -2,7 +2,9 @@
 
 ROOTDIR="$( cd "$( dirname "$0")" && pwd )"
 PHANTOMJS_HOME=$PHANTOMJS_HOME
-JSTD_VERSION=1.3.4b
+JSTD_VERSION=1.3.4.b
+
+COMMAND=$1
 
 if [ -z "$PHANTOMJS_HOME" ]; then
     echo "PHANTOMJS_HOME env var not set."
@@ -19,5 +21,32 @@ if [ ! -f "$ROOTDIR/coverage-$JSTD_VERSION.jar" ]; then
     curl http://js-test-driver.googlecode.com/files/coverage-$JSTD_VERSION.jar > $ROOTDIR/coverage-$JSTD_VERSION.jar
 fi
 
-java -jar $ROOTDIR/JsTestDriver-$JSTD_VERSION.jar --port 9876
-$PHANTOMJS_HOME/bin/phantomjs phantomjs-jstd.js
+if [[ $COMMAND == "start" ]]; then
+    echo "Starting JSTD Server"
+
+    nohup java -jar $ROOTDIR/JsTestDriver-$JSTD_VERSION.jar --port 9876 > $ROOTDIR/jstd.out 2> $ROOTDIR/jstd.err < /dev/null &
+    echo $! > $ROOTDIR/jstd.pid
+
+    sleep 5
+
+    echo "Starting PhantomJS"
+
+    nohup $PHANTOMJS_HOME/bin/phantomjs phantomjs-jstd.js > $ROOTDIR/phantomjs.out 2> $ROOTDIR/phantomjs.err < /dev/null &
+    echo $! > $ROOTDIR/phantomjs.pid
+fi
+
+if [[ $COMMAND == "stop" ]]; then
+    echo "Killing JSTD Server"
+
+    PID=`cat $ROOTDIR/jstd.pid`
+    kill $PID
+
+    rm -f $ROOTDIR/jstd.out $ROOTDIR/jstd.err $ROOTDIR/jstd.pid
+
+    echo "Killing PhantomJS"
+
+    PID=`cat $ROOTDIR/phantomjs.pid`
+    kill $PID
+
+    rm -f $ROOTDIR/phantomjs.out $ROOTDIR/phantomjs.err $ROOTDIR/phantomjs.pid
+fi
