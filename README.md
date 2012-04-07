@@ -9,11 +9,13 @@ tests.
 1. Download v1.5 (or greater) of Phantom JS and set an environment variable called PHANTOMJS_HOME
    to the install location.
 
-2. Run -./server start- to fire up the JsTestDriver server and Phantom JS.
+2. Run _./server start_ to fire up the JsTestDriver server and Phantom JS.
+
+(Run _./server stop_ to kill the daemonized JSTD server and PhantomJS processes.)
 
 ## Running Tests
 
-The -runtests.sh- script will run all js unit tests against JsTestDriver, using Phantom JS
+The _runtests.sh_ script will run all js unit tests against JsTestDriver, using Phantom JS
 as the captured browser. Any args passed to this script will be appended to the JsTestDriver invocation.
 
 Example:
