@@ -23,8 +23,6 @@ if [[ $COMMAND == "start" ]]; then
     nohup java -jar $ROOTDIR/JsTestDriver-$JSTD_VERSION.jar --port 9876 > $ROOTDIR/jstd.out 2> $ROOTDIR/jstd.err < /dev/null &
     echo $! > $ROOTDIR/jstd.pid
 
-    sleep 5
-
     echo "Starting PhantomJS"
 
     nohup phantomjs phantomjs-jstd.js > $ROOTDIR/phantomjs.out 2> $ROOTDIR/phantomjs.err < /dev/null &
