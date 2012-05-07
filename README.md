@@ -20,5 +20,5 @@ as the captured browser. Any args passed to this script will be appended to the 
 
 Example:
 
-    ./runtests.sh --config example/jsTestDriver.conf --tests all --testOutput example/reports
+    ./runtests.sh --config examples/helloworld/jsTestDriver.conf --tests all --testOutput examples/helloworld/reports
 
