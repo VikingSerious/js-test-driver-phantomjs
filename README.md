@@ -20,5 +20,13 @@ as the captured browser. Any args passed to this script will be appended to the 
 
 Example:
 
+    mkdir examples/helloworld/reports
+    ./server.sh start
     ./runtests.sh --config examples/helloworld/jsTestDriver.conf --tests all --testOutput examples/helloworld/reports
+    ./server.sh stop
+
+## Errata
+
+JsTestDriver will only output jUnit XML with the --testOutput arg if the path provided exists.
+It won't create the output directory for you. 
 
