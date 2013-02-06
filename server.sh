@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ROOTDIR="$( cd "$( dirname "$0")" && pwd )"
-JSTD_VERSION=1.3.4.b
+JSTD_VERSION=1.3.5
 
 COMMAND=$1
 

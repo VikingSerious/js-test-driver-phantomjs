@@ -7,7 +7,7 @@ tests.
 ## Setup
 
 1. Download v1.5 (or greater) of Phantom JS and make sure the _phantomjs_ binary is on your PATH.
-   (On a Mac homebrew has an updated forumla for the 1.5 static build: brew install phantomjs)
+   (For OS X: homebrew has a forumla for the static build: brew install phantomjs)
 
 2. Run _./server start_ to fire up the JsTestDriver server and Phantom JS.
 
@@ -16,7 +16,7 @@ tests.
 ## Running Tests
 
 The _runtests.sh_ script will run all js unit tests against JsTestDriver, using Phantom JS
-as the captured browser. Any args passed to this script will be appended to the JsTestDriver invocation.
+as the captured browser. Any additional args passed to this script will be passed on to JsTestDriver .
 
 Example:
 
