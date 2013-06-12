@@ -6,8 +6,10 @@ tests.
 
 ## Setup
 
-1. Download v1.5 (or greater) of Phantom JS and make sure the _phantomjs_ binary is on your PATH.
-   (For OS X: homebrew has a forumla for the static build: brew install phantomjs)
+1. Download v1.5 (or greater, v1.8 and v1.9 have been verified) of Phantom JS and make 
+   sure the _phantomjs_ binary is on your PATH.
+   
+(For OS X: homebrew has a forumla for the static build: brew install phantomjs)
 
 2. Run _./server start_ to fire up the JsTestDriver server and Phantom JS.
 
